@@ -6,7 +6,7 @@
 
 Esse link mostrará o DER ->https://dbdesigner.page.link/5wjc6yVKzRuHoTNj6
 
-Link para o PDF -> 
+Link para o PDF -> https://github.com/genQualityLife/projetoQualityLife/blob/main/Documentacao/DER%20QualityLife.pdf
 
 ## 2) Dicionário de dados
 
@@ -139,7 +139,7 @@ Link para o PDF ->
 ## 3) DER do Blog Pessoal 
 
  
- <img src = "https://github.com/karinarv/MySQL/blob/main/blog_pessoal/DER.png"> </img>
+ <img src = "https://github.com/genQualityLife/projetoQualityLife/blob/main/Documentacao/DER%20QualityLife.jpeg"> </img>
       
 
 ## 4) Código em SQL 
