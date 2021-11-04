@@ -12,7 +12,7 @@ Link para o PDF -> https://github.com/genQualityLife/projetoQualityLife/blob/mai
 
 <div>
 
-### Postagens 
+### Produto
  
 <table>
   <thead>
@@ -24,45 +24,52 @@ Link para o PDF -> https://github.com/genQualityLife/projetoQualityLife/blob/mai
   </thead>
   <tbody>
     <tr>
-      <td>PK | Not Null </td>
+      <td> PK | Not Null </td>
       <td> Id </td>
-      <td> bigint</td>
+      <td> bigint </td>
       <td></td>
-      <td>Código de identificação da tabela Postagens</td>
+      <td> Código de identificação da tabela Produtos </td>
     <tr>
       <td> Not null </td>
-      <td> Titulo </td>
+      <td> Nome_Produto </td>
       <td> Varchar </td>
-      <td>255</td>
-      <td>Titulo das Postagens</td>
+      <td> 20 </td>
+      <td> Nome do Produto </td>
     </tr>
     <tr>
-      <td>Not Null</td>
-      <td> Texto </td>
+      <td> Not Null </td>
+      <td> Imagens_Produto </td>
       <td> Varchar </td>
-      <td> 1000 </td>
-      <td>Textos das Postagens</td>
+      <td> 255 </td>
+      <td> Imagens que mostrarão o produto </td>
     </tr>
     <tr>
-      <td>Not Null</td>
-      <td> Data </td>
-      <td> Timestamp </td>
-      <td></td>
-      <td>Representação da data e do horário atual levando em consideração o fuso horário</td>
+      <td> Not Null </td>
+      <td> Descricao </td>
+      <td> varchar </td>
+      <td> 255 </td>
+      <td> Uma breve descrição sobre o produto</td>
+    </tr>
+    <tr>
+      <td> Not Null </td>
+      <td> Preco </td>
+      <td> decimal </td>
+      <td> 7,2 </td>
+      <td> Preço do Produto</td>
     </tr>
     <tr>
       <td>FK | Not Null</td>
-      <td> tema_id  </td>
+      <td> Id_Categoria  </td>
       <td> bigint </td>
-      <td></td>
-      <td>Chave estrangeira referenciando o código da tabela Temas </td>
+      <td> 4 </td>
+      <td>Chave estrangeira referenciando o id da tabela Categoria </td>
     </tr>
     <tr>
       <td>FK | Not Null</td>
-      <td> usuario_id </td>
+      <td> Id_Usuario </td>
       <td> bigint </td>
-      <td></td>
-      <td>Chave estrangeira referenciando o código da tabela Temas</td>
+      <td> 4 </td>
+      <td>Chave estrangeira referenciando o id da tabela Usuario</td>
     </tr>
   </tbody>
 </table>
