@@ -10,5 +10,5 @@ import br.com.qualitylife.model.CategoriaModel;
 @Repository
 public interface CategoriaRepository extends JpaRepository<CategoriaModel, Long>{
 	
-	public List<CategoriaModel> findAllByNameContainingIgnoreCase(String nome_categoria);
+	public List<CategoriaModel> findAllByNomeContainingIgnoreCase(String nome);
 }

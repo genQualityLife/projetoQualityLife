@@ -18,8 +18,8 @@ public class CategoriaModel {
 	private long id_categoria;
 	
 	@NotBlank	
-	@Size(min=5, max= 20, message="O nome deve possuir entre 5 e 20 caracteres")
-	private String nome_categoria;
+	@Size(min = 5, max = 50, message="O nome deve possuir entre 5 e 20 caracteres")
+	private String nome;
 	
 	@NotNull
 	private String imagem;
@@ -36,12 +36,12 @@ public class CategoriaModel {
 		this.id_categoria = id_categoria;
 	}
 
-	public String getNome_categoria() {
-		return nome_categoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNome_categoria(String nome_categoria) {
-		this.nome_categoria = nome_categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getImagem() {

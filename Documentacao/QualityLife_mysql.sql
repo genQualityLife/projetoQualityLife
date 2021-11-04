@@ -1,7 +1,7 @@
 CREATE TABLE `tb_produto` (
-	`id_produto` bigint NOT NULL AUTO_INCREMENT,
-	`nome_produto` varchar(20) NOT NULL,
-	`imagens_produto` varchar(255) NOT NULL,
+	`id_produto` bigint(4) NOT NULL AUTO_INCREMENT,
+	`nome` varchar(50) NOT NULL,
+	`imagem` varchar(255) NOT NULL,
 	`descricao` varchar(255) NOT NULL,
 	`preco` DECIMAL(7,2) NOT NULL,
 	`fk_id_categoria` bigint(4) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `tb_produto` (
 
 CREATE TABLE `tb_categoria` (
 	`id_categoria` bigint(4) NOT NULL AUTO_INCREMENT,
-	`nome_categoria` varchar(20) NOT NULL,
+	`nome` varchar(50) NOT NULL,
 	`imagem` varchar(255) NOT NULL,
 	`descricao` varchar(255) NOT NULL,
 	PRIMARY KEY (`id_categoria`)
@@ -19,7 +19,7 @@ CREATE TABLE `tb_categoria` (
 
 CREATE TABLE `tb_usuario` (
 	`id_usuario` bigint(4) NOT NULL AUTO_INCREMENT,
-	`nome_usuario` varchar(40) NOT NULL,
+	`nome` varchar(50) NOT NULL,
 	`email` varchar(50) NOT NULL,
 	`senha` varchar(16) NOT NULL,
 	PRIMARY KEY (`id_usuario`)
