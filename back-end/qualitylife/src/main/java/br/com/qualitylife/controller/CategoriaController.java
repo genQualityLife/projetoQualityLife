@@ -19,7 +19,7 @@ import br.com.qualitylife.model.CategoriaModel;
 import br.com.qualitylife.repository.CategoriaRepository;
 
 @RestController
-@RequestMapping("/categoria")
+@RequestMapping("/categorias")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
 
