@@ -17,15 +17,15 @@ public class CategoriaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_categoria;
 	
-	@NotBlank	
-	@Size(min = 5, max = 50, message="O nome deve possuir entre 5 e 20 caracteres")
+	@NotBlank(message = "O nome da categoria não pode ser nulo nem branco")	
+	@Size(min = 3, max = 50, message = "O nome deve possuir entre 3 e 20 caracteres")
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "O nome da categoria não pode ser nulo")	
 	private String imagem;
 	
-	@NotNull
-	@Size(min = 30, max = 255,message ="A descricao deve possuir entre 30 e 200 caracteres" )
+	@NotNull(message = "O nome da categoria não pode ser nulo")	
+	@Size(min = 30, max = 255,message = "A descricao deve possuir entre 30 e 200 caracteres" )
 	private String descricao;
 
 	public long getId_categoria() {
