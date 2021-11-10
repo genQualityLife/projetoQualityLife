@@ -1,13 +1,19 @@
 package br.com.qualitylife.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity 
 @Table(name="tb_categoria")
@@ -27,6 +33,10 @@ public class CategoriaModel {
 	@NotNull(message = "O nome da categoria não pode ser nulo")	
 	@Size(min = 30, max = 255,message = "A descricao deve possuir entre 30 e 200 caracteres" )
 	private String descricao;
+	
+	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("categoria")
+	private List<ProdutoModel> produto;
 
 	public long getId_categoria() {
 		return id_categoria;
@@ -59,6 +69,15 @@ public class CategoriaModel {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public List<ProdutoModel> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<ProdutoModel> produto) {
+		this.produto = produto;
+	}
+	
 	
 	
 }
