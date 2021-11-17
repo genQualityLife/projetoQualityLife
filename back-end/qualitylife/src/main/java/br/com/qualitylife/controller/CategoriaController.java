@@ -2,6 +2,8 @@ package br.com.qualitylife.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,12 +46,12 @@ public class CategoriaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<CategoriaModel> post(@RequestBody CategoriaModel categoria){
+	public ResponseEntity<CategoriaModel> post(@Valid @RequestBody CategoriaModel categoria){
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaRepository.save(categoria));
 	}
 	
 	@PutMapping
-	public ResponseEntity<CategoriaModel> put(@RequestBody CategoriaModel categoria){
+	public ResponseEntity<CategoriaModel> put(@Valid @RequestBody CategoriaModel categoria){
 		return categoriaRepository.findById(categoria.getId_categoria())
 				.map(resp -> ResponseEntity.ok().body(categoriaRepository.save(categoria)))
 				.orElse(ResponseEntity.notFound().build());

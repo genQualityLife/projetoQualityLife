@@ -21,22 +21,33 @@ public class UsuarioModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_usuario;
-	
+
 	@NotBlank(message = "O nome do usuário não pode ser branco nem nulo!")
 	@Size(min = 3, max = 50, message = "O nome do usuário deve ter entre 3 e 50 caracteres.")
 	private String nome;
-	
+
 	@NotBlank(message = "O e-mail do usuário não pode ser branco nem nulo!")
 	@Size(min = 18, max = 50, message = "O e-mail do usuário deve ter entre 18 e 50 caracteres.")
 	private String email;
-	
+
 	@NotBlank(message = "A senha do usuário não pode ser branca nem nula!")
-	@Size(min = 8, max = 16, message = "A senha do usuário deve ter entre 8 e 16 caracteres.")
+	@Size(min = 8, message = "A senha do usuário deve ter entre 8 e 16 caracteres.")
 	private String senha;
-	
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<ProdutoModel> produto;
+
+	public UsuarioModel(long id, String nome, String email, String senha) {
+		this.id_usuario = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	public UsuarioModel() {
+
+	} 
 
 	public long getId_usuario() {
 		return id_usuario;
@@ -77,5 +88,5 @@ public class UsuarioModel {
 	public void setProduto(List<ProdutoModel> produto) {
 		this.produto = produto;
 	}
-	
+
 }
