@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -26,8 +27,8 @@ public class UsuarioModel {
 	@Size(min = 3, max = 50, message = "O nome do usuário deve ter entre 3 e 50 caracteres.")
 	private String nome;
 
+	@Email(message = "O e-mail do usuário é obrigatório")
 	@NotBlank(message = "O e-mail do usuário não pode ser branco nem nulo!")
-	@Size(min = 18, max = 50, message = "O e-mail do usuário deve ter entre 18 e 50 caracteres.")
 	private String email;
 
 	@NotBlank(message = "A senha do usuário não pode ser branca nem nula!")
