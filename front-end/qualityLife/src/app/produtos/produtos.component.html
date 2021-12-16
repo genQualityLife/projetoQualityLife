@@ -33,81 +33,74 @@
     <div class="row mt-5">
       <div class="col-md-12 d-flex justify-content-center mb-5">
 
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/LPHNcJa.jpg" alt="Imagem de capa do card">
+        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;" *ngFor='let produto of listaProdutos'>
+          <img [src]="produto.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
           <div class="card-body">
-            <h6 class="card-title">Protetor Auditivo 3M 1436 Tipo Abafador 18db</h6>
+            <h6 class="card-title">{{produto.nome}}</h6>
           </div>
-          <p class="d-flex justify-content-end mr-4">R$: 20,90</p>
-        </div>
-
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/5YRTHRP.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Luva de Segurança Gladiador Azul DA-36105 Danny Ca 8082 Serviços Gerais</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 8,58</p>
-        </div>
-
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/e4O352x.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Óculos proteção / lente incolor / policarbonato - CA 10346</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 11,90</p>
-        </div>
-
-
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/ck0Mrtq.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Capacete 3M com carneira e jugular com suspensão ajuste fácil Cinza CA 29638</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 43,90</p>
+          <p class="d-flex justify-content-end mr-4">{{produto.preco}}</p>
         </div>
 
       </div>
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div>
     <div class="row">
-      <div class="col-md-12 d-flex justify-content-center mb-5">
+      <div class="col-md-6">
+        <button data-toggle="modal" data-target="#novoProduto">Cadastrar</button>
+      </div>
+    </div>
+  </div>
 
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/nV4ZFq8.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Luva de Proteção Mecânica Maxidry GP DA:13200 - Impermeável</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 43,99</p>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="novoProduto" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Nova Produto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input [(ngModel)]='produto.nome' type="text" class="form-control" id="nome" placeholder="Digite o nome do produto">
         </div>
 
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/tscl7SF.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Máscara 3M 6100 Semifacial reutilizável P CA 4115</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 108,90</p>
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea [(ngModel)]='produto.descricao' class="form-control" name="descricao" id="descricao" rows="3"></textarea>
         </div>
 
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/kEEA9HT.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Bota de Segurança Em Couro de Amarrar Estival Com Bico Composite Preta CA 42553</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 156,55</p>
+        <div class="form-group">
+          <label for="preco">Preço</label>
+          <input [(ngModel)]='produto.preco' class="form-control" name="preco" id="preco" placeholder="Digite o preço do produto">
         </div>
 
-
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;">
-          <img class="card-img-top img-fluid img-produto" src="https://i.imgur.com/uh9gAJF.jpg" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="card-title">Abafador Auditivo Tipo Concha Libus L-320 22db Regulagem de Altura CA 41987</h6>
-          </div>
-          <p class="d-flex justify-content-end mr-4">R$: 74,02</p>
+        <div class="form-group">
+          <label for="imagem">Imagem</label>
+          <input [(ngModel)]='produto.imagem' class="form-control" name="imagem" id="imagem" placeholder="Insira a imagem do produto">
         </div>
+
+        <div class="form-group">
+          <label for="texto">Escolha uma categoria ou <a href="">cadastre uma novo</a>: </label>
+          <select name="categoria" id="categoria" class="form-control" [(ngModel)]='idCategoria' (change) = "findByIdCategorias()">
+            <option *ngFor='let item of listaCategorias' value="{{item.id_categoria}}">{{item.nome}}</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrar()" data-dismiss="modal">Publicar</button>
       </div>
     </div>
   </div>
 </div>
+<!-- /Modal -->
 

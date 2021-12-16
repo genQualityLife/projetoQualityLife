@@ -12,6 +12,7 @@ export class CadastroComponent implements OnInit {
 
   usuario: Usuario = new Usuario
   confirmarSenha: string
+  tipoUser: string
 
   constructor(
     private auth: AuthService,
@@ -22,12 +23,19 @@ export class CadastroComponent implements OnInit {
     window.scroll(0,0)
   }
 
+  tipoUsuario(event: any){
+    this.tipoUser = event.target.value
+
+  }
+
   confirmeSenha(event: any){
     this.confirmarSenha = event.target.value
   }
 
   cadastrar(){
-    
+
+    this.tipoUser = this.usuario.tipo
+
     if(this.usuario.senha != this.confirmarSenha){
       alert('As senha são incompatíveis.')
     }

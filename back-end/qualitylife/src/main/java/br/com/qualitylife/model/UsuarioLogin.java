@@ -10,6 +10,9 @@ public class UsuarioLogin {
 	
 	private String senha;
 	
+	private String tipo;
+	
+
 	private String token;
 
 	public long getId() {
@@ -52,4 +55,11 @@ public class UsuarioLogin {
 		this.token = token;
 	}
 	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 }

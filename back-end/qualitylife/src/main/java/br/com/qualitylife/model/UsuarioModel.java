@@ -37,6 +37,10 @@ public class UsuarioModel {
 	@NotBlank(message = "A senha do usuário não pode ser branca nem nula!")
 	@Size(min = 8, message = "A senha do usuário deve ter entre 8 e 16 caracteres.")
 	private String senha;
+	
+	@NotBlank(message = "O tipo do usuário não pode ser branco nem nulo!")
+	private String tipo;
+
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
@@ -91,6 +95,14 @@ public class UsuarioModel {
 
 	public void setProduto(List<ProdutoModel> produto) {
 		this.produto = produto;
+	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }
