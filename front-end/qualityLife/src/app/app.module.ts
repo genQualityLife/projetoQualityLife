@@ -16,6 +16,8 @@ import { CategoriaEditComponent } from './edit/categoria-edit/categoria-edit.com
 import { ProdutoDeleteComponent } from './delete/produto-delete/produto-delete.component';
 import { CategoriaDeleteComponent } from './delete/categoria-delete/categoria-delete.component';
 import { ArtigosComponent } from './artigos/artigos.component';
+import { QuemSomosComponent } from './quem-somos/quem-somos.component';
+import { ContatoComponent } from './contato/contato.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { ArtigosComponent } from './artigos/artigos.component';
     CategoriaEditComponent,
     ProdutoDeleteComponent,
     CategoriaDeleteComponent,
-    ArtigosComponent
+    ArtigosComponent,
+    QuemSomosComponent,
+    ContatoComponent
   ],
   imports: [
     BrowserModule,
