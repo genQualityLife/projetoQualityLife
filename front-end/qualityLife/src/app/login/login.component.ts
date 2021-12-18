@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(){
     window.scroll(0,0)
 
-    
+
   }
 
   login(){
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       environment.token = this.usuarioLogin.token
       environment.nome = this.usuarioLogin.nome
       environment.id = this.usuarioLogin.id
+      environment.tipo = this.usuarioLogin.tipo
 
       this.router.navigate(['/produtos'])
     }, erro => {

@@ -25,6 +25,10 @@ export class CategoriasService {
     return this.http.get<Categoria>(`https://genqualitylife.herokuapp.com/categorias/${id}`, this.token)
   }
 
+  getByNomeCategoria(nome: string): Observable<Categoria[]>{
+    return this.http.get<Categoria[]>(`https://genqualitylife.herokuapp.com/categorias/nome/${nome}`, this.token)
+  }
+
   postCategorias(categoria: Categoria): Observable<Categoria>{
     return this.http.post<Categoria>('https://genqualitylife.herokuapp.com/categorias', categoria, this.token)
   }

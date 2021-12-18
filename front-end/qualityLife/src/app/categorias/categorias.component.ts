@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
 import { Categoria } from '../model/Categoria';
-import { AuthService } from '../service/auth.service';
+import { AlertasService } from '../service/alertas.service';
 import { CategoriasService } from '../service/categorias.service';
 
 @Component({
@@ -17,16 +15,11 @@ export class CategoriasComponent implements OnInit {
 
   constructor(
     private categoriaService: CategoriasService,
-    private router: Router
+    private alertas: AlertasService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
-
-    if(environment.token == ''){
-      alert('Sua sessão expirou, faça o login novamente.')
-      this.router.navigate(['/login'])
-    }
 
     this.findAllCategorias()
   }
@@ -40,7 +33,7 @@ export class CategoriasComponent implements OnInit {
   cadastrar(){
     this.categoriaService.postCategorias(this.categoria).subscribe((resp: Categoria) => {
       this.categoria = resp
-      alert('Categoria cadastrada com sucesso!')
+      this.alertas.showAlertSuccess('Categoria cadastrada com sucesso!')
       this.findAllCategorias()
       this.categoria = new Categoria()
     })

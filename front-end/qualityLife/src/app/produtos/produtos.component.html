@@ -1,4 +1,4 @@
-<div class="container-fluid p-0">
+<div class="container-fluid p-0 of-hd">
   <div class="row">
       <div class="col-md-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -30,29 +30,78 @@
 
     <h1 class="text-center">Produtos</h1>
 
+    <!-- Filtrar por categoria -->
+    <div class="row">
+      <div class="col-md-12 d-flex justify-content-start align-items-center mb-3 mx-auto">
+
+        <label class="mx-3" for="dropdownMenuButton">Filtrar por:</label>
+        <div  *ngFor='let categoria of listaCategorias'>
+          <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorias
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a (click)='findByCategoriaProd()' [(ngModel)]='categoriaProd' class="dropdown-item" href="#">{{categoria.nome}}</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- /Filtrar por categoria -->
+
+<!-- TESTE -->
+
+  <div class="row mt-5">
+    <div *ngFor='let categoria of listaCategorias' class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
+
+      <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let item of categoria.produto'>
+        <a [routerLink]="['/produto-interno', produto.id_produto]">
+        <img [src]="item.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
+        <div class="card-body">
+          <h6 class="text-center">{{item.nome}}</h6>
+        </div>
+        <p class="d-flex justify-content-center">{{item.preco}}</p>
+
+
+        <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
+        <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
+      </a>
+      </div>
+
+    </div>
+  </div>
+<!-- TESTE -->
+
     <div class="row mt-5">
       <div class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
 
         <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let produto of listaProdutos'>
+          <a [routerLink]="['/produto-interno', produto.id_produto]">
           <img [src]="produto.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
           <div class="card-body">
             <h6 class="text-center">{{produto.nome}}</h6>
           </div>
           <p class="d-flex justify-content-center">{{produto.preco}}</p>
 
-          <a [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
-          <a [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
 
+          <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
+          <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
+        </a>
         </div>
 
       </div>
     </div>
+
+
   </div>
 
   <div>
     <div class="row">
       <div class="col-md-6">
-        <button data-toggle="modal" data-target="#novoProduto">Cadastrar</button>
+        <button *ngIf='authService.adm()' data-toggle="modal" data-target="#novoProduto">Cadastrar</button>
       </div>
     </div>
   </div>
@@ -60,7 +109,7 @@
   <div>
     <div class="row">
       <div class="col-md-6">
-        <button routerLink="/categorias">Categorias</button>
+        <button *ngIf='authService.adm()' routerLink="/categorias">Categorias</button>
       </div>
     </div>
   </div>
@@ -100,7 +149,7 @@
         </div>
 
         <div class="form-group">
-          <label for="texto">Escolha uma categoria ou <a href="">cadastre uma novo</a>: </label>
+          <label for="texto">Escolha uma categoria ou <a routerLink='/categorias' data-dismiss="modal">cadastre uma novo</a>: </label>
           <select name="categoria" id="categoria" class="form-control" [(ngModel)]='idCategoria' (change) = "findByIdCategorias()">
             <option *ngFor='let item of listaCategorias' value="{{item.id_categoria}}">{{item.nome}}</option>
           </select>
@@ -109,7 +158,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" (click)="cadastrar()" data-dismiss="modal">Publicar</button>
+        <button type="button" class="btn btn-success" (click)="cadastrar()" data-dismiss="modal">Cadastrar</button>
       </div>
     </div>
   </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Categoria } from '../model/Categoria';
 import { Produto } from '../model/Produto';
@@ -20,15 +19,18 @@ export class ProdutosComponent implements OnInit {
   usuario: Usuario = new Usuario()
   listaCategorias: Categoria[]
   listaProdutos: Produto[]
+  categoriaProd: string
   idCategoria: number
   idUsuario = environment.id
+
+  key = 'categorias'
+  reverse = true
 
 
   constructor(
     private produtoService: ProdutosService,
     private categoriaService: CategoriasService,
-    private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {}
 
   ngOnInit(){
@@ -50,15 +52,26 @@ export class ProdutosComponent implements OnInit {
     })
   }
 
-  getAllProdutos(){
-    this.produtoService.getAllProdutos().subscribe((resp: Produto[]) => {
-      this.listaProdutos = resp
-    })
+  findByCategoriaProd(){
+    if(this.categoriaProd == ''){
+      this.getAllProdutos()
+    }
+    else{
+      this.categoriaService.getByNomeCategoria(this.categoriaProd).subscribe((resp: Categoria[]) => {
+        this.listaCategorias = resp
+      })
+    }
   }
 
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {
       this.usuario = resp
+    })
+  }
+
+  getAllProdutos(){
+    this.produtoService.getAllProdutos().subscribe((resp: Produto[]) => {
+      this.listaProdutos = resp
     })
   }
 
