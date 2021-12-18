@@ -33,8 +33,7 @@ export class CadastroComponent implements OnInit {
   }
 
   cadastrar(){
-
-    this.tipoUser = this.usuario.tipo
+    this.usuario.tipo = this.tipoUser
 
     if(this.usuario.senha != this.confirmarSenha){
       alert('As senha são incompatíveis.')

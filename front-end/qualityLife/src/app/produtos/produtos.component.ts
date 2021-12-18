@@ -21,7 +21,7 @@ export class ProdutosComponent implements OnInit {
   listaCategorias: Categoria[]
   listaProdutos: Produto[]
   idCategoria: number
-  idUsuario: number
+  idUsuario = environment.id
 
 
   constructor(
@@ -33,11 +33,6 @@ export class ProdutosComponent implements OnInit {
 
   ngOnInit(){
     window.scroll(0,0)
-
-    if(environment.token == ''){
-      alert('Sua sessão expirou, faça o login novamente.')
-      this.router.navigate(['/login'])
-    }
 
     this.findAllCategorias()
     this.getAllProdutos()
@@ -73,7 +68,7 @@ export class ProdutosComponent implements OnInit {
     this.categoria.id_categoria = this.idCategoria
     this.produto.categoria  = this.categoria
     this.usuario.id_usuario = this.idUsuario
-    this.produto.usuario = this.usuario 
+    this.produto.usuario = this.usuario
 
     this.produtoService.postProduto(this.produto).subscribe((resp: Produto) => {
       this.produto = resp

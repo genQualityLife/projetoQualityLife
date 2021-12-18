@@ -3,21 +3,47 @@
   max-height: 400px;
 }
 
-
-
-.blur-produto{
-  background-color: rgba(255,255,255,0.100);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+.border{
+  border: 1px solid #D9DADB;
 }
 
 .img-produto{
-  height: 200px;
-
+  height: auto;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .clicavel{
   cursor: pointer;
+}
+
+.prod-hover{
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  width: 16%;
+  min-width: 208px;
+}
+
+.prod-hover p,
+.prod-hover h6{
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.prod-hover:hover{
+  width: 21%;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
+}
+
+.prod-hover:hover h6{
+font-size: 1.3rem;
+}
+
+.prod-hover:hover p{
+  font-size: 1.1rem;
 }
 
