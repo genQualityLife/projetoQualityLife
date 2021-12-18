@@ -31,14 +31,14 @@
     <h1 class="text-center">Produtos</h1>
 
     <div class="row mt-5">
-      <div class="col-md-12 d-flex justify-content-center mb-5">
+      <div class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
 
-        <div class="card mx-3 blur-produto clicavel" style="width: 18rem;" *ngFor='let produto of listaProdutos'>
+        <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let produto of listaProdutos'>
           <img [src]="produto.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
           <div class="card-body">
-            <h6 class="card-title">{{produto.nome}}</h6>
+            <h6 class="text-center">{{produto.nome}}</h6>
           </div>
-          <p class="d-flex justify-content-end mr-4">{{produto.preco}}</p>
+          <p class="d-flex justify-content-center">{{produto.preco}}</p>
 
           <a [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
           <a [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
