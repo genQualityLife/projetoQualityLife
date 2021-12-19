@@ -30,29 +30,46 @@
 
     <h1 class="text-center">Produtos</h1>
 
-    <!-- Filtrar por categoria -->
-    <div class="row">
-      <div class="col-md-12 d-flex justify-content-start align-items-center mb-3 mx-auto">
+<!-- Filtrar por categoria -->
 
-        <label class="mx-3" for="dropdownMenuButton">Filtrar por:</label>
-        <div  *ngFor='let categoria of listaCategorias'>
-          <div class="dropdown">
-            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Categorias
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a (click)='findByCategoriaProd()' [(ngModel)]='categoriaProd' class="dropdown-item" href="#">{{categoria.nome}}</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <!-- <div class="row">
+    <div class="col-md-2 d-flex justify-content-start align-items-around mb-3 mx-auto">
+      <label class="mx-3" for="categoria">Filtrar por:</label>
+      <select id="categoria" class="form-control" [(ngModel)]="categoriaProd" (ngModelChange)='findByCategoriaProd()'>
+        <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria.nome">
+          {{categoria.nome}}
+        </option>
+    </select>
     </div>
+  </div> -->
+
+  <div class="row">
+    <div class="col-md-3 form-group">
+      <label for="categoria">Filtrar por:</label>
+      <select [(ngModel)]='categoriaProd' id="categoria" type="text" class="form-control" placeholder="Selecione a categoria" (change)="findByCategoriaProd()">
+        <option *ngFor='let categoria of listaCategorias' value="{{categoria.nome}}">
+          {{categoria.nome}}
+        </option>
+    </select>
+    </div>
+  </div>
+
+  <!-- <div class="form-group">
+    <label for="tema">Escolha o tema ou <a routerLink='/tema' data-dismiss="modal">cadastre um novo</a>: </label>
+    <select [(ngModel)]='idTema' id="tema" type="text" class="form-control" placeholder="Selecione o tema" (change)="findByIdTema()">
+        <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.descricao}}</option>
+    </select>
+</div> -->
 
 
-    <!-- /Filtrar por categoria -->
-
-<!-- TESTE -->
+  <!-- <div class="row d-flex justify-content-center my-5">
+    <div class="col-md-4">
+        <div class="form-group">
+            <input [(ngModel)]='categoriaProd' type="text" class="form-control" id="titulo" placeholder="Pesquisar por categoria"
+              (keyup)='findByCategoriaProd()'>
+        </div>
+    </div>
+  </div> -->
 
   <div class="row mt-5">
     <div *ngFor='let categoria of listaCategorias' class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
@@ -73,27 +90,7 @@
 
     </div>
   </div>
-<!-- TESTE -->
-
-    <div class="row mt-5">
-      <div class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
-
-        <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let produto of listaProdutos'>
-          <a [routerLink]="['/produto-interno', produto.id_produto]">
-          <img [src]="produto.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
-          <div class="card-body">
-            <h6 class="text-center">{{produto.nome}}</h6>
-          </div>
-          <p class="d-flex justify-content-center">{{produto.preco}}</p>
-
-
-          <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
-          <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
-        </a>
-        </div>
-
-      </div>
-    </div>
+<!-- /Filtrar por categoria -->
 
 
   </div>

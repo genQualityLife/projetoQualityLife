@@ -26,7 +26,7 @@ export class ProdutosService {
   }
 
   getByCategoriaProd(categoria: string): Observable<Produto[]>{
-    return this.http.get<Produto[]>(`https://genqualitylife.herokuapp.com/produtos/${categoria}`, this.token)
+    return this.http.get<Produto[]>(`https://localhost:8080/produtos/categoria/${categoria}`, this.token)
   }
 
   postProduto(produto: Produto): Observable<Produto>{

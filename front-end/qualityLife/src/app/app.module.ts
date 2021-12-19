@@ -23,6 +23,7 @@ import { ContatoComponent } from './contato/contato.component';
 import { ProdutoInternoComponent } from './produto-interno/produto-interno.component';
 import { HomeComponent } from './home/home.component';
 import { AlertasComponent } from './alertas/alertas.component';
+import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 
 
 
@@ -44,7 +45,8 @@ import { AlertasComponent } from './alertas/alertas.component';
     ContatoComponent,
     ProdutoInternoComponent,
     HomeComponent,
-    AlertasComponent
+    AlertasComponent,
+    UsuarioEditComponent
   ],
   imports: [
     BrowserModule,
