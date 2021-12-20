@@ -56,7 +56,6 @@ export class ProdutosComponent implements OnInit {
 
   findByCategoriaProd(){
     if(!this.categoriaProd){
- //     this.getAllProdutos()
       this.listaSelect = this.listaCategorias
     }
     else{
@@ -64,7 +63,7 @@ export class ProdutosComponent implements OnInit {
         this.listaSelect = resp
       })
     }
- console.log(this.categoriaProd) }
+  }
 
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {
