@@ -5,6 +5,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block img-fluid banner" src="../../assets/produtos/banner-nr06.jpg" alt="Banner Produto">
+            <div class="bg-adm" *ngIf='authService.adm()'></div>
           </div>
         </div>
       </div>
@@ -40,11 +41,12 @@
             </div>
             <p class="d-flex justify-content-center">{{item.preco}}</p>
 
-
-            <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', item.id_produto]" class="text-info mr-3"
-              href="">Editar</a>
-            <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', item.id_produto]" class="text-danger"
-              href="">Apagar</a>
+            <div class="d-flex justify-content-between">
+              <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', item.id_produto]" class="btn text-white btn-warning"
+                href="">Editar</a>
+              <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', item.id_produto]" class="btn text-white btn-danger"
+                href="">Apagar</a>
+            </div>
           </a>
         </div>
 
@@ -53,23 +55,12 @@
   </div>
   <!-- /Filtrar por categoria -->
 
-  <div>
-    <h3 class="text-ligh" >Menu Administrador</h3>
-    <div>
-      <div class="row">
-        <div class="col-md-6">
-          <button *ngIf='authService.adm()' data-toggle="modal" data-target="#novoProduto">Cadastrar Novo Produto</button>
-        </div>
+  <div *ngIf='authService.adm()' class="menu-adm">
+    <h3 class="text-white mb-4 text-center" >Menu Administrador</h3>
+    <div class="d-flex justify-content-between">
+          <button class="btn btn-adm btn-outline-light" data-toggle="modal" data-target="#novoProduto">Novo Produto</button>
+          <button class="btn btn-adm btn-outline-light" routerLink="/categorias">Nova Categorias</button>
       </div>
-    </div>
-
-    <div>
-      <div class="row">
-        <div class="col-md-6">
-          <button *ngIf='authService.adm()' routerLink="/categorias">Categorias</button>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
