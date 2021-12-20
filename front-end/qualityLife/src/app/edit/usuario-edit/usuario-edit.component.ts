@@ -50,7 +50,7 @@ export class UsuarioEditComponent implements OnInit {
       alert('As senhas não são compatíveis.')
     }
     else {
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
+      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         this.router.navigate(['/produtos'])
         alert('Usuário atualizado com sucesso! Faça o login novamente.')

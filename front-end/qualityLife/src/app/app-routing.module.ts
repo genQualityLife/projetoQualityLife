@@ -16,7 +16,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'produtos', pathMatch: 'full'},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
 
   {path: 'login', component: LoginComponent},
   {path: 'cadastro', component: CadastroComponent},
