@@ -20,6 +20,7 @@ export class ProdutosComponent implements OnInit {
   listaCategorias: Categoria[]
   listaProdutos: Produto[]
   categoriaProd: string
+  listaSelect: Categoria[]
   idCategoria: number
   idUsuario = environment.id
 
@@ -43,6 +44,7 @@ export class ProdutosComponent implements OnInit {
   findAllCategorias(){
     this.categoriaService.getAllCategorias().subscribe((resp: Categoria[]) => {
       this.listaCategorias = resp
+      this.listaSelect = resp
     })
   }
 
@@ -53,15 +55,16 @@ export class ProdutosComponent implements OnInit {
   }
 
   findByCategoriaProd(){
-    if(this.categoriaProd == ''){
-      this.getAllProdutos()
+    if(!this.categoriaProd){
+ //     this.getAllProdutos()
+      this.listaSelect = this.listaCategorias
     }
     else{
       this.categoriaService.getByNomeCategoria(this.categoriaProd).subscribe((resp: Categoria[]) => {
-        this.listaCategorias = resp
+        this.listaSelect = resp
       })
     }
-  }
+ console.log(this.categoriaProd) }
 
   findByIdUsuario(){
     this.authService.getByIdUsuario(this.idUsuario).subscribe((resp: Usuario) => {

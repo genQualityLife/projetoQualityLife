@@ -2,33 +2,18 @@
   <div class="row">
       <div class="col-md-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block img-fluid banner" src="../../assets/produtos/bn-natal.gif" alt="Promoção Kit de Natal">
+              <img class="d-block img-fluid banner" src="../../assets/produtos/banner-nr06.jpg" alt="Banner Produto">
             </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid banner" src="../../assets/produtos/bn-epi.gif" alt="Segundo Slide">
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Anterior</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Próximo</span>
-            </a>
           </div>
         </div>
       </div>
   </div>
 
-  <div class="container-fluid mt-3">
+  <div class="container-fluid mt-5">
 
-    <h1 class="text-center">Produtos</h1>
+    <h1 class="text-center font-weight-bold">Produtos</h1>
 
 <!-- Filtrar por categoria -->
 
@@ -44,10 +29,11 @@
   </div> -->
 
   <div class="row">
-    <div class="col-md-3 form-group">
+    <div class="col-md-3 form-group pt-4 m-auto">
       <label for="categoria">Filtrar por:</label>
-      <select [(ngModel)]='categoriaProd' id="categoria" type="text" class="form-control" placeholder="Selecione a categoria" (change)="findByCategoriaProd()">
-        <option *ngFor='let categoria of listaCategorias' value="{{categoria.nome}}">
+      <select [(ngModel)]='categoriaProd' id="categoria" type="text" class="form-control" placeholder="Selecione a categoria" (ngModelChange)="findByCategoriaProd()">
+        <option [ngValue]="null">Todos</option>
+        <option *ngFor='let categoria of listaCategorias' ngValue="{{categoria.nome}}">
           {{categoria.nome}}
         </option>
     </select>
@@ -72,10 +58,10 @@
   </div> -->
 
   <div class="row mt-5">
-    <div *ngFor='let categoria of listaCategorias' class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
+    <div *ngFor='let categoria of listaSelect' class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
 
       <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let item of categoria.produto'>
-        <a [routerLink]="['/produto-interno', produto.id_produto]">
+        <a [routerLink]="['/produto-interno', item.id_produto]">
         <img [src]="item.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
         <div class="card-body">
           <h6 class="text-center">{{item.nome}}</h6>

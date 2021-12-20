@@ -44,14 +44,13 @@ export class UsuarioEditComponent implements OnInit {
   }
 
   atualizar(){
-
     this.usuario.tipo = this.tipoUser
 
     if(this.usuario.senha != this.confirmeSenha){
       alert('As senhas não são compatíveis.')
     }
     else {
-      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
+      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp
         this.router.navigate(['/produtos'])
         alert('Usuário atualizado com sucesso! Faça o login novamente.')
