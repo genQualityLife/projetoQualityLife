@@ -1,106 +1,81 @@
 <div class="container-fluid p-0 of-hd">
   <div class="row">
-      <div class="col-md-12">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block img-fluid banner" src="../../assets/produtos/banner-nr06.jpg" alt="Banner Produto">
-            </div>
+    <div class="col-md-12">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block img-fluid banner" src="../../assets/produtos/banner-nr06.jpg" alt="Banner Produto">
           </div>
         </div>
       </div>
+    </div>
   </div>
 
   <div class="container-fluid mt-5">
 
     <h1 class="text-center font-weight-bold">Produtos</h1>
 
-<!-- Filtrar por categoria -->
-
-  <!-- <div class="row">
-    <div class="col-md-2 d-flex justify-content-start align-items-around mb-3 mx-auto">
-      <label class="mx-3" for="categoria">Filtrar por:</label>
-      <select id="categoria" class="form-control" [(ngModel)]="categoriaProd" (ngModelChange)='findByCategoriaProd()'>
-        <option *ngFor="let categoria of listaCategorias" [ngValue]="categoria.nome">
-          {{categoria.nome}}
-        </option>
-    </select>
-    </div>
-  </div> -->
-
-  <div class="row">
-    <div class="col-md-3 form-group pt-4 m-auto">
-      <label for="categoria">Filtrar por:</label>
-      <select [(ngModel)]='categoriaProd' id="categoria" type="text" class="form-control" placeholder="Selecione a categoria" (ngModelChange)="findByCategoriaProd()">
-        <option [ngValue]="null">Todos</option>
-        <option *ngFor='let categoria of listaCategorias' ngValue="{{categoria.nome}}">
-          {{categoria.nome}}
-        </option>
-    </select>
-    </div>
-  </div>
-
-  <!-- <div class="form-group">
-    <label for="tema">Escolha o tema ou <a routerLink='/tema' data-dismiss="modal">cadastre um novo</a>: </label>
-    <select [(ngModel)]='idTema' id="tema" type="text" class="form-control" placeholder="Selecione o tema" (change)="findByIdTema()">
-        <option *ngFor='let item of listaTemas' value="{{item.id}}">{{item.descricao}}</option>
-    </select>
-</div> -->
-
-
-  <!-- <div class="row d-flex justify-content-center my-5">
-    <div class="col-md-4">
-        <div class="form-group">
-            <input [(ngModel)]='categoriaProd' type="text" class="form-control" id="titulo" placeholder="Pesquisar por categoria"
-              (keyup)='findByCategoriaProd()'>
-        </div>
-    </div>
-  </div> -->
-
-  <div class="row mt-5">
-    <div *ngFor='let categoria of listaSelect' class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
-
-      <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let item of categoria.produto'>
-        <a [routerLink]="['/produto-interno', item.id_produto]">
-        <img [src]="item.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
-        <div class="card-body">
-          <h6 class="text-center">{{item.nome}}</h6>
-        </div>
-        <p class="d-flex justify-content-center">{{item.preco}}</p>
-
-
-        <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', produto.id_produto]" class="text-info mr-3" href="">Editar</a>
-        <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', produto.id_produto]" class="text-danger" href="">Apagar</a>
-      </a>
+    <div class="row">
+      <div class="col-md-3 form-group pt-4 m-auto">
+        <label for="categoria">Filtrar por:</label>
+        <select [(ngModel)]='categoriaProd' id="categoria" type="text" class="form-control"
+          placeholder="Selecione a categoria" (ngModelChange)="findByCategoriaProd()">
+          <option [ngValue]="null">Todos</option>
+          <option *ngFor='let categoria of listaCategorias' ngValue="{{categoria.nome}}">
+            {{categoria.nome}}
+          </option>
+        </select>
       </div>
+    </div>
 
+    <div class="row mt-5">
+      <div *ngFor='let categoria of listaSelect'
+        class="col-md-9 d-flex justify-content-center align-items-center flex-wrap mb-5 mx-auto">
+
+        <div class="card mx-3 mb-5 border p-3 clicavel prod-hover" *ngFor='let item of categoria.produto'>
+          <a [routerLink]="['/produto-interno', item.id_produto]">
+            <img [src]="item.imagem" class="card-img-top img-fluid img-produto" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h6 class="text-center">{{item.nome}}</h6>
+            </div>
+            <p class="d-flex justify-content-center">{{item.preco}}</p>
+
+
+            <a *ngIf='authService.adm()' [routerLink]="['/produto-edit', item.id_produto]" class="text-info mr-3"
+              href="">Editar</a>
+            <a *ngIf='authService.adm()' [routerLink]="['/produto-delete', item.id_produto]" class="text-danger"
+              href="">Apagar</a>
+          </a>
+        </div>
+
+      </div>
     </div>
   </div>
-<!-- /Filtrar por categoria -->
-
-
-  </div>
+  <!-- /Filtrar por categoria -->
 
   <div>
-    <div class="row">
-      <div class="col-md-6">
-        <button *ngIf='authService.adm()' data-toggle="modal" data-target="#novoProduto">Cadastrar</button>
+    <h3 class="text-ligh" >Menu Administrador</h3>
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <button *ngIf='authService.adm()' data-toggle="modal" data-target="#novoProduto">Cadastrar Novo Produto</button>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="row">
+        <div class="col-md-6">
+          <button *ngIf='authService.adm()' routerLink="/categorias">Categorias</button>
+        </div>
       </div>
     </div>
   </div>
-
-  <div>
-    <div class="row">
-      <div class="col-md-6">
-        <button *ngIf='authService.adm()' routerLink="/categorias">Categorias</button>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="novoProduto" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+<div class="modal fade" id="novoProduto" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+  aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -113,27 +88,33 @@
 
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input [(ngModel)]='produto.nome' type="text" class="form-control" id="nome" placeholder="Digite o nome do produto">
+          <input [(ngModel)]='produto.nome' type="text" class="form-control" id="nome"
+            placeholder="Digite o nome do produto">
         </div>
 
         <div class="form-group">
           <label for="descricao">Descrição</label>
-          <textarea [(ngModel)]='produto.descricao' class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+          <textarea [(ngModel)]='produto.descricao' class="form-control" name="descricao" id="descricao"
+            rows="3"></textarea>
         </div>
 
         <div class="form-group">
           <label for="preco">Preço</label>
-          <input [(ngModel)]='produto.preco' class="form-control" name="preco" id="preco" placeholder="Digite o preço do produto">
+          <input [(ngModel)]='produto.preco' class="form-control" name="preco" id="preco"
+            placeholder="Digite o preço do produto">
         </div>
 
         <div class="form-group">
           <label for="imagem">Imagem</label>
-          <input [(ngModel)]='produto.imagem' class="form-control" name="imagem" id="imagem" placeholder="Insira a imagem do produto">
+          <input [(ngModel)]='produto.imagem' class="form-control" name="imagem" id="imagem"
+            placeholder="Insira a imagem do produto">
         </div>
 
         <div class="form-group">
-          <label for="texto">Escolha uma categoria ou <a routerLink='/categorias' data-dismiss="modal">cadastre uma novo</a>: </label>
-          <select name="categoria" id="categoria" class="form-control" [(ngModel)]='idCategoria' (change) = "findByIdCategorias()">
+          <label for="texto">Escolha uma categoria ou <a routerLink='/categorias' data-dismiss="modal">cadastre uma
+              novo</a>: </label>
+          <select name="categoria" id="categoria" class="form-control" [(ngModel)]='idCategoria'
+            (change)="findByIdCategorias()">
             <option *ngFor='let item of listaCategorias' value="{{item.id_categoria}}">{{item.nome}}</option>
           </select>
         </div>
@@ -147,4 +128,3 @@
   </div>
 </div>
 <!-- /Modal -->
-

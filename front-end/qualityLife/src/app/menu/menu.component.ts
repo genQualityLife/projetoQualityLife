@@ -21,9 +21,9 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  atualizar(){
+  atualizarEdit(){
     if (this.auth.logado() == true){
-      this.router.navigate(['/usuario-edit', environment.id])
+      this.router.navigate(['/usuario-edit', this.id])
     }
     else{
       this.router.navigate(['/login'])

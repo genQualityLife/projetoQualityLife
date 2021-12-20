@@ -13,29 +13,29 @@
 
       <div class="col-md-10">
 
-          <div class="form-group">
-              <label for="nome">Nome</label>
-              <input [(ngModel)]='usuario.nome' class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome">
+        <div class="form-group text-dark">
+          <label for="nome">Nome</label>
+          <input [(ngModel)]='usuario.nome' class="form-control" type="text" name="nome" id="nome" placeholder="Digite seu nome">
+      </div>
+
+          <div class="form-group text-dark">
+              <label for="email">E-mail</label>
+              <input [(ngModel)]='usuario.email' class="form-control" type="text" name="email" id="email" placeholder="Digite seu e-mail">
           </div>
 
-          <div class="form-group">
-              <label for="email">Usuário</label>
-              <input [(ngModel)]='usuario.email' class="form-control" type="text" name="email" id="email" placeholder="Seu e-mail">
-          </div>
-
-          <div class="form-group">
+          <div class="form-group text-dark">
               <label for="senha">Senha</label>
-              <input (input)='confirmarSenha($event)' class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha">
+              <input (input)='confirmarSenha($event)' class="form-control" type="password" name="senha" id="senha" placeholder="Digite sua senha">
           </div>
 
-          <div class="form-group">
+          <div class="form-group text-dark">
               <label for="confirmeSenha">Confirmar Senha</label>
               <input [(ngModel)]='usuario.senha' class="form-control" type="password" name="confirmeSenha" id="confirmeSenha" placeholder="Confirme sua senha">
           </div>
 
           <div class="form-group">
-              <label for="tipo">Tipo de Usuário</label>
-              <select class="form-control" name="tipo" id="tipo" (change)='tipoUsuario($event)'>
+            <label for="tipo">Tipo de Usuário</label>
+            <select class="form-control" name="tipo" id="tipo" (change)='tipoUsuario($event)'>
                   <option>Selecione um tipo de usuário</option>
                   <option value="normal">Normal</option>
                   <option *ngIf='authService.adm()' value="adm">Administrador</option>
